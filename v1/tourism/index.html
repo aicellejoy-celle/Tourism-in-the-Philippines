@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discover the Philippines | Tourism Highlights</title>
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Explore the breathtaking islands of the Philippines. Discover Palawan, Boracay, Bohol, Siargao and more tourist destinations.">
+    <meta name="keywords" content="Philippines tourism, travel Philippines, Palawan, Boracay, Bohol, Siargao, Cebu">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00897B; /* Teal accent */
+            --primary-dark: #00695C;
+            --secondary: #F4A261; /* Golden accent */
+            --background: #0f172a; /* Slate 900 for modern dark mode */
+            --text-main: #f8fafc;
+            --text-muted: #cbd5e1;
+            --card-bg: rgba(30, 41, 59, 0.6);
+            --card-border: rgba(255, 255, 255, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--background);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            text-align: center;
+            background: linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.95)),
+                        url('https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?q=80&w=2000') center/cover no-repeat;
+            background-attachment: fixed;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at center, transparent 0%, var(--background) 120%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 6vw, 5.5rem);
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            background: linear-gradient(45deg, #ffffff, var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.8rem;
+            border-radius: 50px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 4px 15px rgba(0, 137, 123, 0.2);
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 137, 123, 0.4);
+        }
+
+        /* Destinations Section */
+        .destinations {
+            padding: 8rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .section-subtitle {
+            color: var(--primary);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.85rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        /* Glassmorphism Card Design */
+        .card {
+            background: var(--card-bg);
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid var(--card-border);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            position: relative;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        .card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .card-img-wrapper {
+            height: 260px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .card:hover .card-img {
+            transform: scale(1.08);
+        }
+
+        .card-img-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to bottom, rgba(15, 23, 42, 0) 40%, #0f172a 100%);
+        }
+
+        .card-content {
+            padding: 2.5rem;
+            padding-top: 1rem;
+            position: relative;
+        }
+
+        .tag {
+            position: absolute;
+            top: -20px;
+            right: 2rem;
+            background: var(--secondary);
+            color: #000;
+            padding: 0.5rem 1.2rem;
+            border-radius: 30px;
+            font-weight: 800;
+            font-size: 0.8rem;
+            box-shadow: 0 5px 15px rgba(244, 162, 97, 0.3);
+            z-index: 10;
+        }
+
+        .card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .card-region {
+            color: var(--primary);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .card-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .card-link {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+            transition: gap 0.3s ease;
+            position: relative;
+        }
+
+        .card-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: width 0.3s ease;
+        }
+
+        .card:hover .card-link {
+            gap: 12px;
+            color: var(--secondary);
+        }
+
+        .card:hover .card-link::after {
+            width: 100%;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .reveal-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Floating Nav */
+        .nav {
+            position: fixed;
+            top: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            border: 1px solid rgba(255,255,255,0.08);
+            display: flex;
+            gap: 2.5rem;
+            z-index: 100;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            transition: all 0.3s ease;
+        }
+
+        .nav.scrolled {
+            top: 1rem;
+            padding: 0.8rem 2rem;
+            background: rgba(15, 23, 42, 0.95);
+            border-color: rgba(255,255,255,0.15);
+        }
+
+        .nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: color 0.3s;
+        }
+
+        .nav a:hover,
+        .nav a.active {
+            color: var(--secondary);
+        }
+
+        /* Features Section */
+        .features {
+            background: linear-gradient(to bottom, #0f172a, #0b1120);
+            padding: 8rem 2rem;
+            border-top: 1px solid var(--card-border);
+        }
+
+        .features-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .feature-item {
+            padding: 3rem 2rem;
+            border-radius: 24px;
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.4), rgba(30, 41, 59, 0.1));
+            border: 1px solid rgba(255,255,255,0.03);
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-10px);
+            background: linear-gradient(145deg, rgba(40, 54, 76, 0.5), rgba(30, 41, 59, 0.2));
+            border-color: rgba(255,255,255,0.1);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .feature-title {
+            font-family: 'Playfair Display', serif; 
+            font-size: 1.6rem; 
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: #0b1120;
+            color: var(--text-muted);
+            border-top: 1px solid var(--card-border);
+        }
+        
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav {
+                width: 90%;
+                justify-content: center;
+                gap: 1.5rem;
+                padding: 1rem;
+            }
+            .hero {
+                padding-top: 6rem;
+            }
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nav" id="navbar">
+        <a href="#home" class="active">Home</a>
+        <a href="#destinations">Destinations</a>
+        <a href="#experiences">Experiences</a>
+    </nav>
+
+    <header class="hero" id="home">
+        <div class="hero-content">
+            <h1>The Pearl of the Orient Seas</h1>
+            <p>7,641 islands of pristine beaches, lush mountains, rich history, and the warmest smiles in the world. Your ultimate tropical escape awaits.</p>
+            <a href="#destinations" class="btn">Explore Destinations</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="destinations" id="destinations">
+            <div class="section-header reveal-on-scroll">
+                <div class="section-subtitle">Top Highlights</div>
+                <h2 class="section-title">Breathtaking Destinations</h2>
+            </div>
+
+            <div class="grid">
+                <!-- Palawan -->
+                <article class="card reveal-on-scroll">
+                    <div class="card-img-wrapper">
+                        <!-- High quality unspalsh image of El Nido / Palawan -->
+                        <img src="https://images.unsplash.com/photo-1542359649-ce1543fc08a8?auto=format&fit=crop&q=80&w=800" alt="Palawan" class="card-img" loading="lazy">
+                        <div class="card-img-overlay"></div>
+                    </div>
+                    <div class="card-content">
+                        <span class="tag">#1 Island</span>
+                        <h3 class="card-title">Palawan</h3>
+                        <div class="card-region">
+                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
+                            MIMAROPA Region
+                        </div>
+                        <p class="card-desc">Crystal clear waters, majestic limestone cliffs, and hidden lagoons. Explore the underground river and pristine beaches of El Nido and Coron.</p>
+                        <a href="#" class="card-link">Discover More <span>→</span></a>
+                    </div>
+                </article>
+
+                <!-- Boracay -->
+                <article class="card reveal-on-scroll" style="transition-delay: 0.1s">
+                    <div class="card-img-wrapper">
+                        <!-- Boracay Beach -->
+                        <img src="https://images.unsplash.com/photo-1518987048-93e29699e79a?auto=format&fit=crop&q=80&w=800" alt="Boracay" class="card-img" loading="lazy">
+                        <div class="card-img-overlay"></div>
+                    </div>
+                    <div class="card-content">
+                        <span class="tag">Beaches</span>
+                        <h3 class="card-title">Boracay</h3>
+                        <div class="card-region">
+                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
+                            Western Visayas
+                        </div>
+                        <p class="card-desc">World-famous for its powdery white sand and spectacular sunsets. A tropical paradise that comes alive with vibrant nightlife and water sports.</p>
+                        <a href="#" class="card-link">Discover More <span>→</span></a>
+                    </div>
+                </article>
+
+                <!-- Bohol -->
+                <article class="card reveal-on-scroll" style="transition-delay: 0.2s">
+                    <div class="card-img-wrapper">
+                        <!-- Tropical aerial showing nature -->
+                        <img src="https://images.unsplash.com/photo-1542640244-7e672d6cef4e?auto=format&fit=crop&q=80&w=800" alt="Bohol" class="card-img" loading="lazy">
+                        <div class="card-img-overlay"></div>
+                    </div>
+                    <div class="card-content">
+                        <span class="tag">Nature</span>
+                        <h3 class="card-title">Bohol</h3>
+                        <div class="card-region">
+                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
+                            Central Visayas
+                        </div>
+                        <p class="card-desc">Home to the iconic Chocolate Hills and adorable Tarsiers. Cruise along the Loboc River or dive into the colorful reefs of Panglao Island.</p>
+                        <a href="#" class="card-link">Discover More <span>→</span></a>
+                    </div>
+                </article>
+
+                <!-- Banaue -->
+                <article class="card reveal-on-scroll" style="transition-delay: 0.3s">
+                    <div class="card-img-wrapper">
+                        <!-- Rice Terraces -->
+                        <img src="https://images.unsplash.com/photo-1582239474755-91db49bd92bf?auto=format&fit=crop&q=80&w=800" alt="Banaue Rice Terraces" class="card-img" loading="lazy">
+                        <div class="card-img-overlay"></div>
+                    </div>
+                    <div class="card-content">
+                        <span class="tag">Heritage</span>
+                        <h3 class="card-title">Banaue</h3>
+                        <div class="card-region">
+                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
+                            Cordillera
+                        </div>
+                        <p class="card-desc">The 8th Wonder of the World. Ancient rice terraces meticulously carved into the mountains by the Ifugao ancestors over 2,000 years ago.</p>
+                        <a href="#" class="card-link">Discover More <span>→</span></a>
+                    </div>
+                </article>
+                
+                <!-- Siargao -->
+                <article class="card reveal-on-scroll" style="transition-delay: 0.4s">
+                    <div class="card-img-wrapper">
+                        <!-- Siargao palm tree / surf vibes -->
+                        <img src="https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&q=80&w=800" alt="Siargao" class="card-img" loading="lazy">
+                        <div class="card-img-overlay"></div>
+                    </div>
+                    <div class="card-content">
+                        <span class="tag">Surfing</span>
+                        <h3 class="card-title">Siargao</h3>
+                        <div class="card-region">
+                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
+                            Caraga Region
+                        </div>
+                        <p class="card-desc">The surfing capital of the Philippines. Experience laid-back island vibes, infinite palm trees, turquoise rock pools, and world-class waves at Cloud 9.</p>
+                        <a href="#" class="card-link">Discover More <span>→</span></a>
+                    </div>
+                </article>
+
+                <!-- Cebu -->
+                <article class="card reveal-on-scroll" style="transition-delay: 0.5s">
+                    <div class="card-img-wrapper">
+                        <!-- Cebu waterfalls / sea -->
+                        <img src="https://images.unsplash.com/photo-1551041777-ed277b8dd348?auto=format&fit=crop&q=80&w=800" alt="Cebu" class="card-img" loading="lazy">
+                        <div class="card-img-overlay"></div>
+                    </div>
+                    <div class="card-content">
+                        <span class="tag">Culture & Sea</span>
+                        <h3 class="card-title">Cebu</h3>
+                        <div class="card-region">
+                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
+                            Central Visayas
+                        </div>
+                        <p class="card-desc">A perfect blend of city life and raw nature. Swim with gentle whale sharks, canyoneer through majestic waterfalls, and explore deep Spanish-colonial roots.</p>
+                        <a href="#" class="card-link">Discover More <span>→</span></a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="features" id="experiences">
+            <div class="section-header reveal-on-scroll">
+                <div class="section-subtitle">Why Visit</div>
+                <h2 class="section-title">Beyond the Beautiful Scenery</h2>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-item reveal-on-scroll">
+                    <div class="feature-icon">🌅</div>
+                    <h3 class="feature-title">Endless Summer</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Experience amazing tropical weather year-round across our diverse and rich archipelagic ecosystems.</p>
+                </div>
+                <div class="feature-item reveal-on-scroll" style="transition-delay: 0.2s">
+                    <div class="feature-icon">🐠</div>
+                    <h3 class="feature-title">Biodiversity</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Voted as one of the best diving destinations in the world, teeming with extreme marine richness and life.</p>
+                </div>
+                <div class="feature-item reveal-on-scroll" style="transition-delay: 0.4s">
+                    <div class="feature-icon">🎭</div>
+                    <h3 class="feature-title">Rich Culture</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Immerse yourself in vibrant festivals, historical architecture, and the legendary warmth of Filipino hospitality.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-logo">Philippine Tourism</div>
+        <p>&copy; 2026 Philippine Tourism Explorer. Created for exploration and discovery.</p>
+    </footer>
+
+    <script>
+        // Scroll reveal animation
+        const revealElements = document.querySelectorAll('.reveal-on-scroll');
+        
+        const revealCb = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    // Stop observing once revealed
+                    observer.unobserve(entry.target);
+                }
+            });
+        };
+
+        const revealOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const revealObserver = new IntersectionObserver(revealCb, revealOptions);
+        
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelectorAll('.nav a').forEach(a => a.classList.remove('active'));
+                this.classList.add('active');
+                const targetId = this.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    window.scrollTo({
+                        top: targetSection.offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
