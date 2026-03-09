@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | Philippine Tourism</title>
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Privacy Policy for Philippine Tourism website.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0038A8; /* Philippine Flag Blue */
+            --primary-dark: #002366;
+            --secondary: #FCE100; /* Sun Yellow */
+            --tertiary: #CE1126; /* Philippine Flag Red */
+            --background: #0f172a; /* Slate 900 for modern dark mode */
+            --text-main: #f8fafc;
+            --text-muted: #cbd5e1;
+            --card-bg: rgba(30, 41, 59, 0.6);
+            --card-border: rgba(255, 255, 255, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--background);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.8;
+            padding-top: 6rem;
+        }
+
+        /* Floating Nav */
+        .nav {
+            position: fixed;
+            top: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            border: 1px solid rgba(255,255,255,0.15);
+            display: flex;
+            gap: 2.5rem;
+            z-index: 100;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+
+        .nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: color 0.3s;
+        }
+
+        .nav a:hover {
+            color: var(--secondary);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+            animation: fadeIn 1s ease-out;
+        }
+
+        /* Glassmorphism Container */
+        .policy-content {
+            background: var(--card-bg);
+            border-radius: 24px;
+            padding: 3rem;
+            border: 1px solid var(--card-border);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            margin-bottom: 4rem;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            color: white;
+            text-align: center;
+            background: linear-gradient(45deg, #ffffff, var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+
+        p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        ul {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: var(--secondary);
+        }
+
+        /* GitHub Profile Card */
+        .dev-profile {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 4rem;
+            padding: 2rem;
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.4), rgba(30, 41, 59, 0.1));
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .dev-profile:hover {
+            transform: translateY(-5px);
+            border-color: rgba(252, 225, 0, 0.3); /* secondary */
+        }
+
+        .github-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid var(--secondary);
+            box-shadow: 0 0 20px rgba(252, 225, 0, 0.2);
+        }
+
+        .dev-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 0.2rem;
+        }
+
+        .dev-info p {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .github-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #24292e; /* GitHub dark */
+            color: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .github-link:hover {
+            background: var(--text-main);
+            color: #24292e;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: #0b1120;
+            color: var(--text-muted);
+            border-top: 1px solid var(--card-border);
+        }
+        
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                width: 90%;
+                justify-content: center;
+                gap: 1.5rem;
+            }
+            .policy-content {
+                padding: 2rem;
+            }
+            .dev-profile {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nav">
+        <a href="index.html">← Back to Home</a>
+    </nav>
+
+    <div class="container">
+        <div class="policy-content">
+            <h1>Privacy Policy</h1>
+            <p><strong>Last Updated: March 2026</strong></p>
+            
+            <p>Welcome to <strong>Philippine Tourism Explorer</strong>. We respect your privacy and are committed to protecting any personal information you may share with us. This Privacy Policy outlines our practices regarding data collection, use, and protection.</p>
+
+            <h2>1. Compliance with Philippine Laws</h2>
+            <p>This privacy policy is governed by the laws of the Republic of the Philippines, and specifically complies with <strong>Republic Act No. 10173</strong>, also known as the <em>Data Privacy Act of 2012 (DPA)</em>, and its Implementing Rules and Regulations. As a visitor to our site, your rights to be informed, to object, to access, to rectification, to erasure or blocking, and to damages are strictly respected and upheld.</p>
+
+            <h2>2. Information Collection</h2>
+            <p>This website functions primarily as an informational showcase of Philippine tourism spots. We do not require visitors to create accounts or submit personal information to browse the public pages. However, standard internet data may be processed automatically, including:</p>
+            <ul>
+                <li>IP addresses, browser types, and language preferences.</li>
+                <li>Device information and operating system details.</li>
+                <li>Time and date of your visit, and the pages you viewed.</li>
+            </ul>
+
+            <h2>3. Hosting and third-party services</h2>
+            <p>This website is proudly hosted on <strong>Vercel</strong>, a secure cloud platform. When you visit this website, Vercel automatically collects diagnostic and analytical data necessary to keep the platform secure, reliable, and performing globally. For more information on how Vercel handles data, please refer to the <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Vercel Privacy Policy</a>.</p>
+
+            <h2>4. Use of Cookies</h2>
+            <p>We may use essential cookies to maintain security and ensure the proper functioning of the site. We do not use advertising or tracking cookies that follow you across the internet. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent.</p>
+
+            <h2>5. Data Security</h2>
+            <p>We value your trust. Since we do not collect sensitive personal data directly, the risk of data breaches is minimal. However, we utilize Vercel's enterprise-grade infrastructure to ensure that any diagnostic data or transit data (via HTTPS) is encrypted and secured against unauthorized access, alteration, disclosure, or destruction.</p>
+
+            <h2>6. Changes to This Privacy Policy</h2>
+            <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page. You are advised to review this Privacy Policy periodically for any changes.</p>
+
+            <h2>7. Contact the Developer</h2>
+            <p>If you have any questions about this Privacy Policy, your rights under the Data Privacy Act of 2012, or the technical implementation of this website, please reach out via GitHub.</p>
+
+            <!-- Developer Profile Card -->
+            <div class="dev-profile">
+                <img src="https://github.com/aicellejoy-celle.png" alt="Developer Avatar" class="github-avatar">
+                <div class="dev-info">
+                    <h3>Built by Aicelle Joy</h3>
+                    <p>Software Developer & Creator of Philippine Tourism Explorer.</p>
+                    <a href="https://github.com/aicellejoy-celle" target="_blank" rel="noopener noreferrer" class="github-link">
+                        <svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+                        Follow @aicellejoy-celle
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-logo">Philippine Tourism</div>
+        <p>&copy; 2026 Philippine Tourism Explorer. Created for exploration and discovery.</p>
+        <p style="margin-top: 1rem;"><a href="privacy.html" style="color: var(--secondary); text-decoration: none; font-size: 0.9rem;">Privacy Policy</a></p>
+    </footer>
+
+</body>
+</html>
